@@ -266,22 +266,40 @@
             width: 100%;
         }
 
+        .purchase-layout-wrapper {
+            max-width: 1920px;
+            margin: 0 auto;
+            padding-left: 297px; /* Aligns left edge with mermaid image */
+            padding-right: 320px; /* Aligns right edge exactly with intro text block */
+            box-sizing: border-box;
+        }
+
         .purchase-grid {
-            display: grid;
-            grid-template-columns: 1fr 280px;
-            gap: 60px;
-            align-items: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between; /* Spaces text box and images appropriately */
+            align-items: stretch; /* Stretches the image container perfectly to match text height */
+        }
+
+        .purchase-text {
+            flex: 0 0 883px;
+            width: 883px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .purchase-text h2 {
             font-size: 2.2rem;
+            line-height: 1.2;
         }
 
         .purchase-text p {
-            font-size: 1.25rem;
-            line-height: 1.4;
+            font-size: 1.35rem;
+            line-height: 1.45;
             margin-top: 10px;
             margin-bottom: 20px;
+            width: 100%;
         }
 
         .etsy-btn {
@@ -304,8 +322,8 @@
         .hagstone-stack {
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            align-items: center;
+            justify-content: space-between; /* Pushes top image perfectly to header height, bottom to button */
+            align-items: flex-end;
         }
 
         .hagstone-stack img {
@@ -421,11 +439,11 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 1650px) {
-            .intro-layout-wrapper {
+            .intro-layout-wrapper, .purchase-layout-wrapper {
                 padding-left: 5%;
                 padding-right: 5%;
             }
-            .intro-text {
+            .intro-text, .purchase-text {
                 flex: 1;
                 width: auto;
             }
@@ -440,12 +458,14 @@
                 flex-direction: column;
                 gap: 20px;
             }
-            .intro-grid, .purchase-grid {
-                grid-template-columns: 1fr;
-            }
             .intro-grid {
                 flex-direction: column;
                 align-items: center;
+            }
+            .purchase-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
             }
             .mermaid-container {
                 flex: 0 0 auto;
@@ -463,6 +483,8 @@
             .hagstone-stack {
                 flex-direction: row;
                 justify-content: center;
+                align-items: center;
+                gap: 30px;
             }
         }
     </style>
@@ -529,21 +551,23 @@
         </section>
 
         <section id="issues" class="purchase-section">
-            <div class="container purchase-grid">
-                <div class="purchase-text">
-                    <div class="title-wrapper">
-                        <h2>Getting hold of a copy</h2>
-                        <span class="straight-line" style="background-color: var(--text-dark);"></span>
+            <div class="purchase-layout-wrapper">
+                <div class="purchase-grid">
+                    <div class="purchase-text">
+                        <div class="title-wrapper">
+                            <h2>Getting hold of a copy</h2>
+                            <span class="straight-line"></span>
+                        </div>
+                        
+                        <p>Mermazine costs £x a copy - and you get 118 pages for that! It will be available in person at selected events in and around Norwich, particularly those run by Norwich Pagan Moot, and at selected shops. If you're in Norwich and could collect a copy, do email us. Likewise, if you run a shop and would like to stock Mermazine, please email us at the address given above.</p>
+                        <p>Alternatively, copies of Mermazine can be bought on-line via the @ FensalirCunning Etsy shop (postage and packing and Etsy fees apply)</p>
+                        
+                        <a href="https://www.etsy.com/uk/listing/4395890776/mermazine-for-the-merfolk-of-east-anglia" target="_blank" rel="noopener noreferrer" class="etsy-btn">Fensalir Cunning Etsy Shop</a>
                     </div>
-                    
-                    <p>Mermazine costs £x a copy - and you get 118 pages for that! It will be available in person at selected events in and around Norwich, particularly those run by Norwich Pagan Moot, and at selected shops. If you're in Norwich and could collect a copy, do email us. Likewise, if you run a shop and would like to stock Mermazine, please email us at the address given above.</p>
-                    <p>Alternatively, copies of Mermazine can be bought on-line via the @ FensalirCunning Etsy shop (postage and packing and Etsy fees apply)</p>
-                    
-                    <a href="https://www.etsy.com/uk/listing/4395890776/mermazine-for-the-merfolk-of-east-anglia" target="_blank" rel="noopener noreferrer" class="etsy-btn">Fensalir Cunning Etsy Shop</a>
-                </div>
-                <div class="hagstone-stack">
-                    <img src="images/home-2-hagstone.png" alt="Hagstone Top" loading="lazy">
-                    <img src="images/home-3-hagstone.png" alt="Hagstone Bottom" loading="lazy">
+                    <div class="hagstone-stack">
+                        <img src="images/home-2-hagstone.png" alt="Hagstone Top" loading="lazy">
+                        <img src="images/home-3-hagstone.png" alt="Hagstone Bottom" loading="lazy">
+                    </div>
                 </div>
             </div>
         </section>
