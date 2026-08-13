@@ -277,8 +277,8 @@
         .purchase-grid {
             display: flex;
             flex-direction: row;
-            justify-content: space-between; /* Spaces text box and images appropriately */
-            align-items: stretch; /* Stretches the image container perfectly to match text height */
+            justify-content: space-between; 
+            align-items: stretch; 
         }
 
         .purchase-text {
@@ -323,7 +323,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between; /* Pushes top image perfectly to header height, bottom to button */
-            width: 420px;
+            width: 420px; /* Fills the space between the text block and the right layout edge */
         }
 
         .hagstone-stack img {
@@ -336,7 +336,7 @@
         }
 
         .hagstone-stack img:last-child {
-           align-self: flex-start; /* Moves lower image to the left of the space */
+            align-self: flex-start; /* Moves lower image to the left of the space */
         }
 
         /* Team Section */
@@ -348,6 +348,14 @@
             text-align: center;
         }
 
+        .team-layout-wrapper {
+            max-width: 1920px;
+            margin: 0 auto;
+            padding-left: 297px; /* Aligns left edge exactly with the text block above */
+            padding-right: 320px; /* Aligns right edge exactly with the top hagstone above */
+            box-sizing: border-box;
+        }
+
         .team-section h2 {
             font-size: 2.2rem;
         }
@@ -355,7 +363,7 @@
         .team-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 50px;
+            gap: 80px; /* Increased the gap between text columns */
             margin-top: 50px;
             text-align: left;
         }
@@ -364,11 +372,12 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            width: 100%; /* Ensures the member container spans the grid column perfectly */
         }
 
         .team-circle {
-            width: 250px;
-            height: 250px;
+            width: 100%; /* Makes image dynamically span the full width of the text column */
+            aspect-ratio: 1 / 1; /* Automatically sets height equal to width */
             border-radius: 50%;
             object-fit: cover;
             margin: 0 auto 30px auto;
@@ -381,12 +390,12 @@
         }
 
         .team-member h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
 
         .team-member p {
-            font-size: 1.1rem;
-            line-height: 1.4;
+            font-size: 1.25rem;
+            line-height: 1.4; /* Tighter line-height to match the text amends */
             margin-top: 10px;
             margin-bottom: 12px;
         }
@@ -447,7 +456,7 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 1650px) {
-            .intro-layout-wrapper, .purchase-layout-wrapper {
+            .intro-layout-wrapper, .purchase-layout-wrapper, .team-layout-wrapper {
                 padding-left: 5%;
                 padding-right: 5%;
             }
@@ -495,8 +504,8 @@
                 gap: 30px;
                 width: auto;
             }
-                .hagstone-stack img:first-child,
-                .hagstone-stack img:last-child {
+            .hagstone-stack img:first-child,
+            .hagstone-stack img:last-child {
                 align-self: center;
             }
         }
@@ -569,7 +578,7 @@
                     <div class="purchase-text">
                         <div class="title-wrapper">
                             <h2>Getting hold of a copy</h2>
-                            <span class="straight-line"></span>
+                            <span class="straight-line" style="background-color: var(--text-dark);"></span>
                         </div>
                         
                         <p>Mermazine costs £x a copy - and you get 118 pages for that! It will be available in person at selected events in and around Norwich, particularly those run by Norwich Pagan Moot, and at selected shops. If you're in Norwich and could collect a copy, do email us. Likewise, if you run a shop and would like to stock Mermazine, please email us at the address given above.</p>
@@ -586,7 +595,7 @@
         </section>
 
         <section id="contact" class="team-section">
-            <div class="container">
+            <div class="team-layout-wrapper">
                 <div class="title-wrapper" style="align-items: center;">
                     <h2>Meet the Mermazine team!</h2>
                     <span class="straight-line"></span>
