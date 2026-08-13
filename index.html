@@ -6,7 +6,6 @@
     <meta name="description" content="Mermazine - For the Merfolk of East Anglia. Explore East Anglian mermaid lore, poetry, stories, and creative inspiration. Get Issue 1 now.">
     <title>Mermazine | For the Merfolk of East Anglia</title>
     
-    <!-- Google Fonts: Alegreya Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
@@ -43,7 +42,6 @@
             position: relative;
         }
 
-        /* Reusable Dynamic Wavy Line SVG */
         .title-wrapper {
             display: inline-flex;
             flex-direction: column;
@@ -72,7 +70,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 95%; /* Pushes items closer to the edges */
+            max-width: 95%; 
             margin: 0 auto;
             padding: 0 2%;
         }
@@ -80,7 +78,7 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 60px; /* Space between logo and tagline */
+            gap: 60px; 
         }
 
         .header-logo img {
@@ -121,7 +119,7 @@
         .carousel-container {
             position: relative;
             width: 100%;
-            height: 500px;
+            height: 680px;
             background-color: #e0e0e0;
             overflow: hidden;
         }
@@ -152,7 +150,6 @@
             object-fit: cover;
         }
 
-        /* Carousel Placeholders */
         .bg-slide-2 { background-color: #ff9a9e; color: #fff; }
         .bg-slide-3 { background-color: #a18cd1; color: #fff; }
         .bg-slide-4 { background-color: #fbc2eb; color: #333; }
@@ -191,22 +188,31 @@
             width: 100%;
         }
 
+        .intro-layout-wrapper {
+            max-width: 1920px;
+            margin: 0 auto;
+            padding-left: 297px;
+            box-sizing: border-box;
+        }
+
         .intro-grid {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 60px;
-            align-items: start; /* Aligns content to the top */
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            align-items: start;
         }
 
         .mermaid-container {
+            flex: 0 0 380px;
+            width: 380px;
             display: flex;
             justify-content: flex-start;
             position: relative;
         }
 
         .mermaid-img {
-            width: 100%;
-            max-width: 320px;
+            width: 380px;
+            height: auto;
             animation: floatMermaid 8s ease-in-out infinite alternate;
         }
 
@@ -215,14 +221,23 @@
             100% { transform: translateY(40px); }
         }
 
+        .intro-text {
+            flex: 0 0 883px;
+            width: 883px;
+        }
+
         .intro-text h1 {
+            font-family: 'Alegreya Sans', sans-serif;
             font-weight: 700;
-            font-size: 2.4rem;
+            font-size: 48pt;
+            line-height: 1.1;
         }
 
         .intro-text p {
-            font-size: 1.15rem;
-            line-height: 1.6;
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 400;
+            font-size: 30pt;
+            line-height: 1.4;
             margin-bottom: 25px;
         }
 
@@ -398,6 +413,22 @@
         }
 
         /* Mobile Responsiveness */
+        @media (max-width: 1650px) {
+            .intro-layout-wrapper {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+            .intro-text {
+                flex: 1;
+                width: auto;
+            }
+            .intro-text h1 {
+                font-size: 36pt;
+            }
+            .intro-text p {
+                font-size: 20pt;
+            }
+        }
         @media (max-width: 900px) {
             header .header-container {
                 flex-direction: column;
@@ -411,17 +442,22 @@
             .intro-grid, .purchase-grid {
                 grid-template-columns: 1fr;
             }
+            .intro-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .mermaid-container {
+                flex: 0 0 auto;
+                justify-content: center;
+            }
+            .mermaid-img {
+                animation: none;
+            }
             .team-grid {
                 grid-template-columns: 1fr;
                 max-width: 500px;
                 margin-left: auto;
                 margin-right: auto;
-            }
-            .mermaid-container {
-                justify-content: center;
-            }
-            .mermaid-img {
-                animation: none;
             }
             .hagstone-stack {
                 flex-direction: row;
@@ -465,27 +501,29 @@
         </section>
 
         <section id="about" class="intro-section">
-            <div class="container intro-grid">
-                <div class="mermaid-container">
-                    <img src="images/ditchingham-mermaid-1.png" alt="Ditchingham Mermaid" class="mermaid-img" loading="lazy">
-                </div>
-                <div class="intro-text">
-                    <div class="title-wrapper">
-                        <h1>Mermazine: For the Merfolk of East Anglia!</h1>
-                        <svg class="wavy-line" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                            <path d="M0,8 Q12.5,0 25,8 T50,8 T75,8 T100,8" fill="none" stroke="#ffffff" stroke-width="2.5"/>
-                        </svg>
+            <div class="intro-layout-wrapper">
+                <div class="intro-grid">
+                    <div class="mermaid-container">
+                        <img src="images/ditchingham-mermaid-1.png" alt="Ditchingham Mermaid" class="mermaid-img" loading="lazy">
                     </div>
-                    
-                    <p>We first heard their siren call in the spring of 2019 and, the more we sought them, the more they began to emerge from obscurity: the beautiful, the grotesque, the perfect, the defaced, the badly restored, the lovingly created. Some might have been intended to convey Christian strictures about the sin of vanity, but this was only one tiny aspect of the wealth of meaning these wonderful creatures have carried across the centuries, much of which will be explored in depth in this and future issues of Mermazine.</p>
-                    
-                    <p>Although we made many mermaid pilgrimages this summer, seven years ago by the time the days were shortening, we realised we had only scratched the surface of East Anglian mermaid lore. Perhaps we needed the intervening time period of the pandemic and beyond, to realise that this was too vast a topic to be compressed into book form. The merfolk seemed so much more from us than that, for one lay theme running through all that we had discovered was that of creative inspiration. Merfolk call us to write poetry, stories, learned articles, to draw and paint, to embroider, to make jewellery, to protest about the pollution of their waters.</p>
-                    
-                    <p>With the launch of issue one, we are making a start, and Alice, Chris and Val hope that you too will be inspired by a glimpse in the mermaid's mirror, a flash of bright scales or the touch of a comb through your hair. If you have pictures, writing or other ideas you would like to contribute, please email us at the following address. It's given as an image to avoid spam, so please retype it into your email program.</p>
-                    
-                    <div class="italic-lines">
-                        <p>Until address to contact us, given as a graphic to avoid spam. Please type in</p>
-                        <p>for us (as an image to avoid webbots). Please note that we do not accept any AI-generated content.</p>
+                    <div class="intro-text">
+                        <div class="title-wrapper">
+                            <h1>Mermazine: For the Merfolk of East Anglia!</h1>
+                            <svg class="wavy-line" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                                <path d="M0,8 Q12.5,0 25,8 T50,8 T75,8 T100,8" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+                            </svg>
+                        </div>
+                        
+                        <p>We first heard their siren call in the spring of 2019 and, the more we sought them, the more they began to emerge from obscurity: the beautiful, the grotesque, the perfect, the defaced, the badly restored, the lovingly created. Some might have been intended to convey Christian strictures about the sin of vanity, but this was only one tiny aspect of the wealth of meaning these wonderful creatures have carried across the centuries, much of which will be explored in depth in this and future issues of Mermazine.</p>
+                        
+                        <p>Although we made many mermaid pilgrimages this summer, seven years ago by the time the days were shortening, we realised we had only scratched the surface of East Anglian mermaid lore. Perhaps we needed the intervening time period of the pandemic and beyond, to realise that this was too vast a topic to be compressed into book form. The merfolk seemed so much more from us than that, for one lay theme running through all that we had discovered was that of creative inspiration. Merfolk call us to write poetry, stories, learned articles, to draw and paint, to embroider, to make jewellery, to protest about the pollution of their waters.</p>
+                        
+                        <p>With the launch of issue one, we are making a start, and Alice, Chris and Val hope that you too will be inspired by a glimpse in the mermaid's mirror, a flash of bright scales or the touch of a comb through your hair. If you have pictures, writing or other ideas you would like to contribute, please email us at the following address. It's given as an image to avoid spam, so please retype it into your email program.</p>
+                        
+                        <div class="italic-lines">
+                            <p>Until address to contact us, given as a graphic to avoid spam. Please type in</p>
+                            <p>for us (as an image to avoid webbots). Please note that we do not accept any AI-generated content.</p>
+                        </div>
                     </div>
                 </div>
             </div>
