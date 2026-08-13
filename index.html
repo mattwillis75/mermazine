@@ -15,6 +15,7 @@
         :root {
             --cyan-bg: #29e0d6;
             --cyan-btn-hover: #50ece4;
+            --light-teal: #7cf1e9; /* Light teal for straight lines */
             --text-dark: #111111;
             --text-light: #ffffff;
             --nav-hover-green: #0a8a7c;
@@ -60,10 +61,14 @@
             margin: 0 0 5px 0;
         }
 
-        .wavy-line {
-            height: 10px;
+        /* Replaced Wavy Lines with Straight Lines */
+        .straight-line {
+            height: 4px;
             width: 100%;
+            background-color: var(--light-teal);
             display: block;
+            border-radius: 2px;
+            margin-top: 2px;
         }
 
         /* Header Navigation */
@@ -239,8 +244,8 @@
         }
 
         .intro-text p {
-            font-size: 1.2rem;
-            line-height: 1.8;
+            font-size: 1.35rem; /* Sized to hit approx 16 words per line */
+            line-height: 1.7;
             margin-bottom: 25px;
         }
 
@@ -273,7 +278,7 @@
         }
 
         .purchase-text p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             line-height: 1.6;
             margin-bottom: 25px;
         }
@@ -391,7 +396,7 @@
             color: var(--cyan-bg);
         }
 
-        .footer-wave-container {
+        .footer-line-container {
             width: 300px;
             margin: 0 auto 30px auto;
         }
@@ -503,9 +508,7 @@
                     <div class="intro-text">
                         <div class="title-wrapper">
                             <h1>Mermazine: For the Merfolk of East Anglia!</h1>
-                            <svg class="wavy-line" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                                <path d="M0,8 Q12.5,0 25,8 T50,8 T75,8 T100,8" fill="none" stroke="#ffffff" stroke-width="2.5"/>
-                            </svg>
+                            <span class="straight-line"></span>
                         </div>
                         
                         <p>We first heard their siren call in the spring of 2019 and, the more we sought them, the more they began to emerge from obscurity: the beautiful, the grotesque, the perfect, the defaced, the badly restored, the lovingly created. Some might have been intended to convey Christian strictures about the sin of vanity, but this was only one tiny aspect of the wealth of meaning these wonderful creatures have carried across the centuries, much of which will be explored in depth in this and future issues of Mermazine.</p>
@@ -528,9 +531,7 @@
                 <div class="purchase-text">
                     <div class="title-wrapper">
                         <h2>Getting hold of a copy</h2>
-                        <svg class="wavy-line" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                            <path d="M0,8 Q12.5,0 25,8 T50,8 T75,8 T100,8" fill="none" stroke="#111111" stroke-width="2.5"/>
-                        </svg>
+                        <span class="straight-line" style="background-color: var(--text-dark);"></span>
                     </div>
                     
                     <p>Mermazine costs £x a copy - and you get 118 pages for that! It will be available in person at selected events in and around Norwich, particularly those run by Norwich Pagan Moot, and at selected shops. If you're in Norwich and could collect a copy, do email us. Likewise, if you run a shop and would like to stock Mermazine, please email us at the address given above.</p>
@@ -549,9 +550,7 @@
             <div class="container">
                 <div class="title-wrapper" style="align-items: center;">
                     <h2>Meet the Mermazine team!</h2>
-                    <svg class="wavy-line" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true" style="width: 100%;">
-                        <path d="M0,8 Q12.5,0 25,8 T50,8 T75,8 T100,8" fill="none" stroke="#ffffff" stroke-width="2.5"/>
-                    </svg>
+                    <span class="straight-line"></span>
                 </div>
                 
                 <div class="team-grid">
@@ -559,9 +558,7 @@
                         <img src="images/home-4-val.png" alt="Val Thomas" class="team-circle" loading="lazy">
                         <div class="title-wrapper">
                             <h3>Val Thomas</h3>
-                            <svg class="wavy-line" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                                <path d="M0,8 Q12.5,0 25,8 T50,8 T75,8 T100,8" fill="none" stroke="#ffffff" stroke-width="2.5"/>
-                            </svg>
+                            <span class="straight-line"></span>
                         </div>
                         <p>Val has a keen interest in witchcraft, spells, literature, and traditional crafts. She writes, practises as a medical and magical herbalist, spins, weaves and teaches, as well as continuing with her own explorations of the realms of the Gods, the Fair Ones and other spiritual beings.</p>
                         <p>Val lives in Norfolk and loves sharing her enthusiasm for the county's stories and traditions, its plants and creatures and for the magic which thrives here in this sacred landscape.</p>
@@ -571,9 +568,7 @@
                         <img src="images/home-5-chris.png" alt="Chris Wood" class="team-circle" loading="lazy">
                         <div class="title-wrapper">
                             <h3>Chris Wood</h3>
-                            <svg class="wavy-line" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                                <path d="M0,8 Q12.5,0 25,8 T50,8 T75,8 T100,8" fill="none" stroke="#ffffff" stroke-width="2.5"/>
-                            </svg>
+                            <span class="straight-line"></span>
                         </div>
                         <p>Chris has a keen interest in witchcraft, spells, literature, and traditional crafts. He writes, practises as a medical and magical herbalist, spins, weaves and teaches, as well as continuing with his own explorations of the realms of the Gods, the Fair Ones and other spiritual beings.</p>
                         <p>Chris lives in Norfolk and loves sharing his enthusiasm for the county's stories and traditions, its plants and creatures and for the magic which thrives here in this sacred landscape.</p>
@@ -583,9 +578,7 @@
                         <img src="images/home-6-alice.png" alt="Alice Crick" class="team-circle" loading="lazy">
                         <div class="title-wrapper">
                             <h3>Alice Crick</h3>
-                            <svg class="wavy-line" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                                <path d="M0,8 Q12.5,0 25,8 T50,8 T75,8 T100,8" fill="none" stroke="#ffffff" stroke-width="2.5"/>
-                            </svg>
+                            <span class="straight-line"></span>
                         </div>
                         <p>Alice has a keen interest in witchcraft, spells, literature, and traditional crafts. She writes, practises as a medical and magical herbalist, spins, weaves and teaches, as well as continuing with her own explorations of the realms of the Gods, the Fair Ones and other spiritual beings.</p>
                         <p>Alice lives in Norfolk and loves sharing her enthusiasm for the county's stories and traditions, its plants and creatures and for the magic which thrives here in this sacred landscape.</p>
@@ -606,10 +599,8 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <div class="footer-wave-container">
-                <svg class="wavy-line" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                    <path d="M0,8 Q12.5,0 25,8 T50,8 T75,8 T100,8" fill="none" stroke="#ffffff" stroke-width="2.5"/>
-                </svg>
+            <div class="footer-line-container">
+                <span class="straight-line"></span>
             </div>
             <div class="social-links">
                 <a href="#" aria-label="Visit our Instagram page"><img src="images/footer-1-instagram.png" alt="Instagram" loading="lazy"></a>
