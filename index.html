@@ -6,9 +6,10 @@
     <meta name="description" content="Mermazine - For the Merfolk of East Anglia. Explore East Anglian mermaid lore, poetry, stories, and creative inspiration. Get Issue 1 now.">
     <title>Mermazine | For the Merfolk of East Anglia</title>
     
+    <!-- Google Fonts: Alegreya Sans, Lato, and Spectral -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Lato:wght@300&family=Spectral:wght@400&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -26,13 +27,19 @@
         }
 
         body {
-            font-family: 'Alegreya Sans', sans-serif;
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
             color: var(--text-dark);
             background-color: var(--text-light);
-            font-weight: 400;
             overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Spectral', serif;
+            font-weight: 400;
         }
 
         .container {
@@ -100,6 +107,7 @@
         }
 
         nav ul li a {
+            font-family: 'Alegreya Sans', sans-serif;
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 500;
@@ -122,6 +130,7 @@
             height: 680px;
             background-color: #e0e0e0;
             overflow: hidden;
+            font-family: 'Alegreya Sans', sans-serif;
         }
 
         .carousel-slide {
@@ -227,17 +236,12 @@
         }
 
         .intro-text h1 {
-            font-family: 'Alegreya Sans', sans-serif;
-            font-weight: 700;
             font-size: 48pt;
             line-height: 1.1;
         }
 
         .intro-text p {
-            font-family: 'Alegreya Sans', sans-serif;
-            font-weight: 400;
             font-size: 30pt;
-            line-height: 1.4;
             margin-bottom: 25px;
         }
 
@@ -266,17 +270,16 @@
         }
 
         .purchase-text h2 {
-            font-weight: 700;
             font-size: 2.2rem;
         }
 
         .purchase-text p {
             font-size: 1.15rem;
-            line-height: 1.6;
             margin-bottom: 25px;
         }
 
         .etsy-btn {
+            font-family: 'Alegreya Sans', sans-serif;
             display: inline-block;
             background-color: var(--cyan-bg);
             color: var(--text-light);
@@ -315,7 +318,6 @@
         }
 
         .team-section h2 {
-            font-weight: 700;
             font-size: 2.2rem;
         }
 
@@ -348,13 +350,11 @@
         }
 
         .team-member h3 {
-            font-weight: 700;
             font-size: 1.8rem;
         }
 
         .team-member p {
             font-size: 1.1rem;
-            line-height: 1.6;
             margin-bottom: 15px;
         }
 
@@ -380,6 +380,7 @@
         }
 
         .footer-nav ul li a {
+            font-family: 'Alegreya Sans', sans-serif;
             color: var(--text-light);
             text-decoration: none;
             font-size: 1.1rem;
