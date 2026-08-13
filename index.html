@@ -19,7 +19,7 @@
             --text-light: #ffffff;
             --nav-hover-green: #0a8a7c;
             --footer-bg: #1c1c1c;
-            --container-width: 1100px;
+            --container-width: 1400px; /* Widened to match full page 16:9 view */
         }
 
         html {
@@ -36,7 +36,6 @@
             overflow-x: hidden;
         }
 
-        /* Constrained Layout Container to prevent ultra-wide stretching */
         .container {
             max-width: var(--container-width);
             margin: 0 auto;
@@ -82,23 +81,37 @@
             width: 100%;
         }
 
-        header .container {
-            display: flex;
-            justify-content: space-between;
+        /* Grid layout for Logo (left), Tagline (center), Nav (right) */
+        header .header-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            flex-wrap: wrap;
             gap: 20px;
         }
 
-        .logo-group {
+        .header-logo {
             display: flex;
-            align-items: center;
-            gap: 25px;
+            justify-content: flex-start;
         }
 
-        .logo-group img {
+        .header-logo img {
             max-height: 55px;
             object-fit: contain;
+        }
+
+        .header-tagline {
+            display: flex;
+            justify-content: center;
+        }
+
+        .header-tagline img {
+            max-height: 35px;
+            object-fit: contain;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: flex-end;
         }
 
         nav ul {
@@ -201,7 +214,7 @@
 
         .intro-grid {
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 350px 1fr;
             gap: 60px;
             position: relative;
         }
@@ -216,7 +229,7 @@
         .mermaid-img {
             position: absolute;
             width: 100%;
-            max-width: 250px;
+            max-width: 280px;
             left: 0;
             animation: floatMermaid 15s ease-in-out infinite alternate;
         }
@@ -256,7 +269,7 @@
 
         .purchase-grid {
             display: grid;
-            grid-template-columns: 1fr 250px;
+            grid-template-columns: 1fr 280px;
             gap: 60px;
             align-items: center;
         }
@@ -297,7 +310,7 @@
         }
 
         .hagstone-stack img {
-            width: 160px;
+            width: 180px;
             object-fit: contain;
         }
 
@@ -330,8 +343,8 @@
         }
 
         .team-circle {
-            width: 220px;
-            height: 220px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             object-fit: cover;
             margin: 0 auto 30px auto;
@@ -408,7 +421,16 @@
             transform: scale(1.1);
         }
 
+        /* Mobile Responsiveness */
         @media (max-width: 900px) {
+            header .header-container {
+                grid-template-columns: 1fr;
+                justify-content: center;
+                row-gap: 20px;
+            }
+            .header-logo, .header-tagline, .header-nav {
+                justify-content: center;
+            }
             .intro-grid, .purchase-grid {
                 grid-template-columns: 1fr;
             }
@@ -425,7 +447,7 @@
             }
             .mermaid-img {
                 position: relative;
-                animation: none; /* Disable complex floating on small screens */
+                animation: none;
             }
             .hagstone-stack {
                 flex-direction: row;
@@ -437,12 +459,14 @@
 <body>
 
     <header>
-        <div class="container">
-            <div class="logo-group">
+        <div class="container header-container">
+            <div class="header-logo">
                 <img src="images/mermazine-logo-1.png" alt="Mermazine Logo" width="200" height="55" loading="lazy">
+            </div>
+            <div class="header-tagline">
                 <img src="images/tagline-1.png" alt="For the Merfolk of East Anglia" width="250" height="35" loading="lazy">
             </div>
-            <nav aria-label="Main Navigation">
+            <nav aria-label="Main Navigation" class="header-nav">
                 <ul>
                     <li><a href="#about" class="active">About</a></li>
                     <li><a href="#issues">Issues</a></li>
