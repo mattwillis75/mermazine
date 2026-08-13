@@ -323,12 +323,20 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between; /* Pushes top image perfectly to header height, bottom to button */
-            align-items: flex-end;
+            width: 420px;
         }
 
         .hagstone-stack img {
             width: 180px;
             object-fit: contain;
+        }
+
+        .hagstone-stack img:first-child {
+            align-self: flex-end; /* Keeps top image on the right edge */
+        }
+
+        .hagstone-stack img:last-child {
+           align-self: flex-start; /* Moves lower image to the left of the space */
         }
 
         /* Team Section */
@@ -485,6 +493,11 @@
                 justify-content: center;
                 align-items: center;
                 gap: 30px;
+                width: auto;
+            }
+                .hagstone-stack img:first-child,
+                .hagstone-stack img:last-child {
+                align-self: center;
             }
         }
     </style>
