@@ -120,24 +120,25 @@
         .news-header { text-align: center; padding: 3rem 2rem 2rem; }
         .news-header h1 { font-size: 3rem; color: var(--cyan-bg); margin-bottom: 0.5rem; }
 
+        /* Modified to a Flex layout so the sticky sidebar functions correctly */
         .news-container { 
-            position: relative;
-            padding: 0 5rem; /* Expanded padding to fit the left icon comfortably */
+            display: flex;
+            align-items: stretch;
+            padding: 0 5rem 0 15px; /* 15px on left for icon, 5rem right for layout balance */
+            gap: 15px; /* Pushes the main text perfectly to the 80px line to match your previous layout */
         }
 
-        /* Explore Widget (Sticky Icon and Pop-out Sidebar) */
+        /* Explore Widget Column */
         .explore-sidebar-container {
-            position: absolute;
-            left: 15px; /* Placed cleanly between the white edge and the image */
-            top: 0; /* Aligned with top of feed */
-            bottom: 0;
-            width: 50px;
+            flex: 0 0 50px; 
+            position: relative;
             z-index: 2500;
         }
 
         .explore-widget {
+            position: -webkit-sticky;
             position: sticky;
-            top: 130px; /* Sticks in place when scrolling, sitting perfectly beneath the header */
+            top: 130px; /* Locks exactly under the header */
         }
 
         .explore-fab {
@@ -169,8 +170,8 @@
         .news-sidebar {
             display: none;
             position: absolute;
-            top: 0; /* Aligns with the fab */
-            left: 65px; /* Opens to the right of the fab */
+            top: 0; 
+            left: 65px; 
             background: #fdfdfd;
             border: 2px solid var(--light-teal);
             padding: 2rem;
@@ -253,6 +254,7 @@
 
         /* News Feed & Image Left Layout */
         .news-feed { 
+            flex: 1;
             width: 100%;
             display: flex; 
             flex-direction: column; 
@@ -274,7 +276,7 @@
         }
 
         .entry-media {
-            flex: 0 0 500px; /* Increased image size */
+            flex: 0 0 500px; 
             max-width: 500px;
         }
 
@@ -286,7 +288,7 @@
 
         .entry-image, .carousel-container { 
             width: 100%; 
-            aspect-ratio: 1 / 1; /* Locked strictly to a square format */
+            aspect-ratio: 1 / 1; 
             object-fit: cover; 
             background: #f0f0f0;
             border-radius: 8px;
@@ -310,10 +312,10 @@
         .carousel-btn.next { right: 10px; }
 
         .entry-date { color: var(--cyan-bg); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem; margin-bottom: 0.5rem; display: block; }
-        .entry-title { font-size: 2.8rem; margin: 0 0 1rem 0; line-height: 1.2; color: var(--text-dark); } /* Larger Title */
+        .entry-title { font-size: 2.8rem; margin: 0 0 1rem 0; line-height: 1.2; color: var(--text-dark); } 
         
         .entry-text, .entry-text p { 
-            font-size: 1.5rem; /* Larger Text Body */
+            font-size: 1.5rem; 
             line-height: 1.5; 
             text-align: left; 
             color: var(--text-dark);
@@ -459,7 +461,10 @@
 
         /* Mobile Layout */
         @media (max-width: 1100px) {
-            .news-container { padding: 0 2rem; } 
+            .news-container { 
+                display: block; /* Disable flex row layout for mobile */
+                padding: 0 2rem; 
+            } 
             
             /* Shifts widget back to bottom-right fixed on small screens so it doesn't overlap content */
             .explore-sidebar-container {
@@ -470,6 +475,7 @@
                 top: auto;
                 height: auto;
                 width: auto;
+                z-index: 2500;
             }
             .explore-widget { position: relative; top: auto; }
             .explore-fab { width: 60px; height: 60px; }
