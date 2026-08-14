@@ -34,13 +34,7 @@
             margin: 0;
             padding: 0;
             color: var(--text-dark);
-            /* Fixed Parallax Background */
-            background-color: var(--cyan-bg);
-            background-image: url('images/background-hagstone.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
+            background-color: var(--text-light); /* Restored to default background */
             overflow-x: hidden;
         }
 
@@ -142,14 +136,9 @@
             color: var(--text-light);
         }
 
-        /* Main Content Wrapper (White Background) */
+        /* Main Content Margin to offset Fixed Header */
         main {
-            background-color: #ffffff;
-            width: 1200px;
-            max-width: 100%;
-            margin: 107px auto 0 auto; 
-            overflow: hidden;
-            box-shadow: 0 0 25px rgba(0,0,0,0.15); 
+            margin-top: 107px; /* Removed the boxed-in layout width/background */
         }
 
         /* Carousel Section */
@@ -538,7 +527,7 @@
                 gap: 20px;
             }
             main {
-                margin-top: 180px; 
+                margin-top: 178px; 
             }
             .carousel-content-wrapper {
                 padding-left: 0;
