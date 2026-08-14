@@ -66,6 +66,8 @@
             margin-top: 2px;
         }
 
+        .cyan-text { color: var(--cyan-bg); }
+
         /* Fixed Header Navigation */
         header {
             background-color: var(--cyan-bg);
@@ -119,35 +121,37 @@
         .news-header h1 { font-size: 3rem; color: var(--cyan-bg); margin-bottom: 0.5rem; }
 
         .news-container { 
-            display: flex; 
-            flex-direction: column;
-            align-items: center;
-            padding: 0 4rem; 
+            position: relative;
+            padding: 0 5rem; /* Expanded padding to fit the left icon comfortably */
         }
 
-        /* Explore Widget (Floating FAB and Sidebar) */
-        .explore-widget {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
+        /* Explore Widget (Sticky Icon and Pop-out Sidebar) */
+        .explore-sidebar-container {
+            position: absolute;
+            left: 15px; /* Placed cleanly between the white edge and the image */
+            top: 0; /* Aligned with top of feed */
+            bottom: 0;
+            width: 50px;
             z-index: 2500;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+        }
+
+        .explore-widget {
+            position: sticky;
+            top: 130px; /* Sticks in place when scrolling, sitting perfectly beneath the header */
         }
 
         .explore-fab {
             background: var(--cyan-bg);
             color: #fff;
             border: 2px solid var(--light-teal);
-            width: 65px;
-            height: 65px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s, background 0.3s;
         }
 
@@ -157,16 +161,16 @@
         }
 
         .explore-fab svg {
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
             stroke: currentColor;
         }
 
         .news-sidebar {
             display: none;
             position: absolute;
-            bottom: 85px; /* Pops up right above the button */
-            right: 0;
+            top: 0; /* Aligns with the fab */
+            left: 65px; /* Opens to the right of the fab */
             background: #fdfdfd;
             border: 2px solid var(--light-teal);
             padding: 2rem;
@@ -178,9 +182,14 @@
 
         .news-sidebar.open {
             display: block;
-            animation: slideUp 0.3s ease-out forwards;
+            animation: slideRight 0.3s ease-out forwards;
         }
 
+        @keyframes slideRight {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -245,7 +254,6 @@
         /* News Feed & Image Left Layout */
         .news-feed { 
             width: 100%;
-            max-width: 1000px;
             display: flex; 
             flex-direction: column; 
             gap: 5rem; 
@@ -254,7 +262,7 @@
         .news-entry {
             display: flex;
             flex-direction: row; 
-            gap: 50px;
+            gap: 60px;
             background: transparent;
             padding: 0 0 4rem 0; 
             border-bottom: 2px solid var(--light-teal); 
@@ -266,8 +274,8 @@
         }
 
         .entry-media {
-            flex: 0 0 450px; /* Increased image box size */
-            max-width: 450px;
+            flex: 0 0 500px; /* Increased image size */
+            max-width: 500px;
         }
 
         .entry-content {
@@ -278,7 +286,7 @@
 
         .entry-image, .carousel-container { 
             width: 100%; 
-            aspect-ratio: 1 / 1; /* Changed to square format */
+            aspect-ratio: 1 / 1; /* Locked strictly to a square format */
             object-fit: cover; 
             background: #f0f0f0;
             border-radius: 8px;
@@ -301,11 +309,11 @@
         .carousel-btn.prev { left: 10px; }
         .carousel-btn.next { right: 10px; }
 
-        .entry-date { color: var(--cyan-bg); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 1rem; margin-bottom: 0.5rem; display: block; }
-        .entry-title { font-size: 2.6rem; margin: 0 0 1rem 0; line-height: 1.2; color: var(--text-dark); }
+        .entry-date { color: var(--cyan-bg); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem; margin-bottom: 0.5rem; display: block; }
+        .entry-title { font-size: 2.8rem; margin: 0 0 1rem 0; line-height: 1.2; color: var(--text-dark); } /* Larger Title */
         
         .entry-text, .entry-text p { 
-            font-size: 1.4rem; /* Increased text size */
+            font-size: 1.5rem; /* Larger Text Body */
             line-height: 1.5; 
             text-align: left; 
             color: var(--text-dark);
@@ -452,6 +460,29 @@
         /* Mobile Layout */
         @media (max-width: 1100px) {
             .news-container { padding: 0 2rem; } 
+            
+            /* Shifts widget back to bottom-right fixed on small screens so it doesn't overlap content */
+            .explore-sidebar-container {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                left: auto;
+                top: auto;
+                height: auto;
+                width: auto;
+            }
+            .explore-widget { position: relative; top: auto; }
+            .explore-fab { width: 60px; height: 60px; }
+            .news-sidebar {
+                top: auto;
+                bottom: 75px;
+                left: auto;
+                right: 0;
+            }
+            .news-sidebar.open {
+                animation: slideUp 0.3s ease-out forwards;
+            }
+            
             .news-entry { flex-direction: column; gap: 30px; }
             .entry-media { flex: 0 0 auto; width: 100%; max-width: 100%; }
         }
@@ -460,7 +491,6 @@
             header .header-container { flex-direction: column; justify-content: center; gap: 20px; }
             .header-left { flex-direction: column; gap: 20px; }
             main { margin-top: 178px; }
-            .explore-widget { bottom: 20px; right: 20px; }
         }
     </style>
 </head>
@@ -485,29 +515,6 @@
     </header>
 
     <main>
-        <!-- Floating Explore Widget -->
-        <div class="explore-widget" id="explore-widget">
-            <button class="explore-fab" id="explore-fab" aria-label="Open Explore Menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </button>
-            <aside class="news-sidebar" id="news-sidebar">
-                <div class="sidebar-header">
-                    <h3>Explore</h3>
-                    <button class="close-explore" id="close-explore" aria-label="Close Explore Menu">&times;</button>
-                </div>
-                <div class="sidebar-group">
-                    <label for="search-input">Search Updates</label>
-                    <input type="text" id="search-input" placeholder="Search by word or keyword...">
-                </div>
-                <div class="sidebar-group">
-                    <label for="year-select">Filter by Year</label>
-                    <select id="year-select">
-                        <option value="all">All Years</option>
-                    </select>
-                </div>
-            </aside>
-        </div>
-
         <div class="news-header">
             <h1>Mermazine News</h1>
             <div style="width: 150px; margin: 0 auto;">
@@ -516,6 +523,32 @@
         </div>
 
         <div class="news-container">
+            
+            <!-- Sticky Explore Widget Area -->
+            <div class="explore-sidebar-container">
+                <div class="explore-widget" id="explore-widget">
+                    <button class="explore-fab" id="explore-fab" aria-label="Open Explore Menu">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                    <aside class="news-sidebar" id="news-sidebar">
+                        <div class="sidebar-header">
+                            <h3>Explore</h3>
+                            <button class="close-explore" id="close-explore" aria-label="Close Explore Menu">&times;</button>
+                        </div>
+                        <div class="sidebar-group">
+                            <label for="search-input">Search Updates</label>
+                            <input type="text" id="search-input" placeholder="Search by word or keyword...">
+                        </div>
+                        <div class="sidebar-group">
+                            <label for="year-select">Filter by Year</label>
+                            <select id="year-select">
+                                <option value="all">All Years</option>
+                            </select>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
             <!-- Feed -->
             <section class="news-feed" id="news-feed">
                 <p style="text-align:center; color:#888; font-size: 1.25rem;">Loading news entries...</p>
