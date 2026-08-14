@@ -255,6 +255,52 @@
             font-style: italic;
         }
 
+        /* Shell & Text Alignment */
+        .shell-text-row {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            gap: 40px;
+            width: 100%;
+        }
+
+        .shell-image-wrapper {
+            flex: 0 0 160px; /* Space designated for the shell */
+            position: relative;
+        }
+
+        .inline-shell-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Scales image proportionally to perfectly match the height of the text block */
+            object-position: left top;
+        }
+
+        .shell-text-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .shell-text-content h2 {
+            font-size: 1.8rem;
+            line-height: 1.3;
+            margin-top: 0; /* Keeps it flush with the top of the image */
+            margin-bottom: 10px;
+        }
+
+        .shell-text-content p {
+            font-size: 1.35rem;
+            line-height: 1.45;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
         /* Image Columns */
         .right-images {
             width: 420px;
@@ -268,6 +314,16 @@
             object-fit: contain;
         }
 
+        /* Ensures the two combs share exact equal height proportions */
+        .right-images.equal-height-imgs {
+            gap: 30px;
+        }
+        
+        .right-images.equal-height-imgs img {
+            flex: 1; 
+            height: 0; /* Allows flex-grow to evenly divide the available height column */
+        }
+
         .img-align-right {
             align-self: flex-end;
         }
@@ -278,14 +334,6 @@
 
         .img-align-left {
             align-self: flex-start;
-        }
-
-        .left-absolute-image {
-            position: absolute;
-            right: calc(100% + 40px); /* 40px gap from the text block */
-            top: 10px;
-            max-width: 150px;
-            height: auto;
         }
 
         /* Footer */
@@ -352,12 +400,6 @@
                 flex: 1;
                 width: auto;
             }
-            .left-absolute-image {
-                position: relative;
-                right: auto;
-                top: auto;
-                margin-bottom: 20px;
-            }
             .content-row:nth-child(2) {
                 flex-direction: column;
             }
@@ -382,6 +424,16 @@
                 flex-direction: column;
                 align-items: center;
             }
+            .shell-text-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .shell-image-wrapper {
+                height: 150px;
+            }
+            .inline-shell-image {
+                position: relative;
+            }
             .right-images {
                 width: 100%;
                 flex-direction: row;
@@ -391,6 +443,7 @@
             }
             .right-images img {
                 align-self: center !important;
+                height: auto !important;
             }
         }
     </style>
@@ -465,7 +518,7 @@
                         <li>Church Poem Prayers, by Alice Kerridge-Crick</li>
                     </ul>
                 </div>
-                <div class="right-images">
+                <div class="right-images equal-height-imgs">
                     <img src="images/issues-1-comb.png" alt="Decorative Comb" class="img-align-right" loading="lazy">
                     <img src="images/issues-2-comb.png" alt="Decorative Comb" class="img-align-center" loading="lazy">
                 </div>
@@ -474,11 +527,16 @@
             <!-- Section 2: Mermazine Blurb -->
             <div class="content-row" style="margin-top: 20px;">
                 <div class="center-text">
-                    <img src="images/Issues-3-shell.png" alt="Spiral Shell" class="left-absolute-image" loading="lazy">
-                    
-                    <h2>Mermazine: For the merfolk of East Anglia!</h2>
-                    <p>It is here! A folklore magazine - which is more like a book - which celebrates the Mermaids of East Anglia, whether found in folklore, church, art or story. This is our first issue of many, for there are many mermaids to discover!</p>
-                    <p>"The Material we place before you in this little magazine all flows from the wellspring of inspiration offered by the many mermaids inhabiting churches, village signs, murals and stories throughout Norfolk, Suffolk and Cambridgeshire. From coastal characters of wave and salt, and the Fen wind to the devious Mbuq and farr, each individual has their own song. Their own message, their own contributions to the magic of the landscape, whether or not the humans that are there actively notice their presence."</p>
+                    <div class="shell-text-row">
+                        <div class="shell-image-wrapper">
+                            <img src="images/Issues-3-shell.png" alt="Spiral Shell" class="inline-shell-image" loading="lazy">
+                        </div>
+                        <div class="shell-text-content">
+                            <h2>Mermazine: For the merfolk of East Anglia!</h2>
+                            <p>It is here! A folklore magazine - which is more like a book - which celebrates the Mermaids of East Anglia, whether found in folklore, church, art or story. This is our first issue of many, for there are many mermaids to discover!</p>
+                            <p>"The Material we place before you in this little magazine all flows from the wellspring of inspiration offered by the many mermaids inhabiting churches, village signs, murals and stories throughout Norfolk, Suffolk and Cambridgeshire. From coastal characters of wave and salt, and the Fen wind to the devious Mbuq and farr, each individual has their own song. Their own message, their own contributions to the magic of the landscape, whether or not the humans that are there actively notice their presence."</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="right-images"></div>
             </div>
