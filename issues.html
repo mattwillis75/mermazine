@@ -90,7 +90,7 @@
             top: 0;
             left: 0;
             z-index: 1000;
-            border-bottom: 2px solid var(--light-teal); /* Thinner teal line */
+            border-bottom: 2px solid var(--light-teal);
         }
 
         header .header-container {
@@ -145,10 +145,10 @@
         /* Main Content Wrapper (White Background) */
         main {
             background-color: #ffffff;
-            width: 1200px; /* 900px carousel + 150px left + 150px right */
+            width: 1200px;
             max-width: 100%;
-            /* 109px top margin ensures the content starts perfectly below the fixed header */
-            margin: 109px auto 0 auto; 
+            /* Perfectly adjusted top margin to close the 2px border gap */
+            margin: 107px auto 0 auto; 
             overflow: hidden;
             box-shadow: 0 0 25px rgba(0,0,0,0.15); 
         }
@@ -447,7 +447,7 @@
                 gap: 20px;
             }
             main {
-                margin-top: 180px; /* Adjusted for taller stacked header on mobile */
+                margin-top: 178px; /* Adjusted for taller stacked header on mobile */
             }
             .shell-text-row {
                 flex-direction: column;
