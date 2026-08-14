@@ -66,8 +66,6 @@
             margin-top: 2px;
         }
 
-        .cyan-text { color: var(--cyan-bg); }
-
         /* Fixed Header Navigation */
         header {
             background-color: var(--cyan-bg);
@@ -113,6 +111,7 @@
             box-shadow: 0 0 25px rgba(0,0,0,0.15); 
             min-height: 100vh;
             padding-bottom: 4rem;
+            position: relative;
         }
 
         /* Header within Main */
@@ -120,31 +119,99 @@
         .news-header h1 { font-size: 3rem; color: var(--cyan-bg); margin-bottom: 0.5rem; }
 
         .news-container { 
-            display: grid; 
-            grid-template-columns: 280px 1fr; 
-            gap: 4rem; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
             padding: 0 4rem; 
-            align-items: start; 
         }
 
-        /* Sidebar Styling (Adapted for Mermazine) */
+        /* Explore Widget (Floating FAB and Sidebar) */
+        .explore-widget {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 2500;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .explore-fab {
+            background: var(--cyan-bg);
+            color: #fff;
+            border: 2px solid var(--light-teal);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .explore-fab:hover {
+            transform: scale(1.05);
+            background: var(--nav-hover-green);
+        }
+
+        .explore-fab svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+        }
+
         .news-sidebar {
-            position: sticky;
-            top: 130px;
+            display: none;
+            position: absolute;
+            bottom: 85px; /* Pops up right above the button */
+            right: 0;
             background: #fdfdfd;
             border: 2px solid var(--light-teal);
             padding: 2rem;
             border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            width: 320px;
+            box-sizing: border-box;
         }
 
-        .news-sidebar h3 { 
-            margin-top: 0; 
-            margin-bottom: 1.5rem; 
-            font-size: 1.6rem; 
-            color: var(--cyan-bg);
+        .news-sidebar.open {
+            display: block;
+            animation: slideUp 0.3s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
             border-bottom: 2px solid var(--light-teal); 
             padding-bottom: 0.5rem; 
         }
+
+        .sidebar-header h3 { 
+            margin: 0; 
+            font-size: 1.6rem; 
+            color: var(--cyan-bg);
+        }
+
+        .close-explore {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            line-height: 1;
+            padding: 0;
+        }
+
+        .close-explore:hover { color: var(--cyan-bg); }
 
         .sidebar-group { margin-bottom: 2rem; }
         .sidebar-group label { 
@@ -175,19 +242,21 @@
             border-color: var(--cyan-bg);
         }
 
-        /* Mobile Expandable Search overrides */
-        .search-flex { display: flex; width: 100%; align-items: center; }
-        .search-icon-btn { display: none; }
-
         /* News Feed & Image Left Layout */
-        .news-feed { display: flex; flex-direction: column; gap: 4rem; }
+        .news-feed { 
+            width: 100%;
+            max-width: 1000px;
+            display: flex; 
+            flex-direction: column; 
+            gap: 5rem; 
+        }
 
         .news-entry {
             display: flex;
-            flex-direction: row; /* Image on left, text on right */
-            gap: 40px;
+            flex-direction: row; 
+            gap: 50px;
             background: transparent;
-            padding: 0 0 3rem 0; 
+            padding: 0 0 4rem 0; 
             border-bottom: 2px solid var(--light-teal); 
         }
 
@@ -197,8 +266,8 @@
         }
 
         .entry-media {
-            flex: 0 0 350px; /* Fixed width for the image block on the left */
-            max-width: 350px;
+            flex: 0 0 450px; /* Increased image box size */
+            max-width: 450px;
         }
 
         .entry-content {
@@ -209,7 +278,7 @@
 
         .entry-image, .carousel-container { 
             width: 100%; 
-            aspect-ratio: 4 / 3; 
+            aspect-ratio: 1 / 1; /* Changed to square format */
             object-fit: cover; 
             background: #f0f0f0;
             border-radius: 8px;
@@ -233,10 +302,10 @@
         .carousel-btn.next { right: 10px; }
 
         .entry-date { color: var(--cyan-bg); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 1rem; margin-bottom: 0.5rem; display: block; }
-        .entry-title { font-size: 2.2rem; margin: 0 0 1rem 0; line-height: 1.2; color: var(--text-dark); }
+        .entry-title { font-size: 2.6rem; margin: 0 0 1rem 0; line-height: 1.2; color: var(--text-dark); }
         
         .entry-text, .entry-text p { 
-            font-size: 1.25rem; 
+            font-size: 1.4rem; /* Increased text size */
             line-height: 1.5; 
             text-align: left; 
             color: var(--text-dark);
@@ -382,9 +451,8 @@
 
         /* Mobile Layout */
         @media (max-width: 1100px) {
-            .news-container { grid-template-columns: 1fr; gap: 2rem; padding: 0 2rem; } 
-            .news-sidebar { position: static; margin-bottom: 2rem; }
-            .news-entry { flex-direction: column; gap: 20px; }
+            .news-container { padding: 0 2rem; } 
+            .news-entry { flex-direction: column; gap: 30px; }
             .entry-media { flex: 0 0 auto; width: 100%; max-width: 100%; }
         }
 
@@ -392,6 +460,7 @@
             header .header-container { flex-direction: column; justify-content: center; gap: 20px; }
             .header-left { flex-direction: column; gap: 20px; }
             main { margin-top: 178px; }
+            .explore-widget { bottom: 20px; right: 20px; }
         }
     </style>
 </head>
@@ -416,6 +485,29 @@
     </header>
 
     <main>
+        <!-- Floating Explore Widget -->
+        <div class="explore-widget" id="explore-widget">
+            <button class="explore-fab" id="explore-fab" aria-label="Open Explore Menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+            <aside class="news-sidebar" id="news-sidebar">
+                <div class="sidebar-header">
+                    <h3>Explore</h3>
+                    <button class="close-explore" id="close-explore" aria-label="Close Explore Menu">&times;</button>
+                </div>
+                <div class="sidebar-group">
+                    <label for="search-input">Search Updates</label>
+                    <input type="text" id="search-input" placeholder="Search by word or keyword...">
+                </div>
+                <div class="sidebar-group">
+                    <label for="year-select">Filter by Year</label>
+                    <select id="year-select">
+                        <option value="all">All Years</option>
+                    </select>
+                </div>
+            </aside>
+        </div>
+
         <div class="news-header">
             <h1>Mermazine News</h1>
             <div style="width: 150px; margin: 0 auto;">
@@ -424,28 +516,6 @@
         </div>
 
         <div class="news-container">
-            <!-- Sidebar -->
-            <aside class="news-sidebar">
-                <h3>Explore</h3>
-                
-                <div class="sidebar-group search-wrapper" id="search-wrapper">
-                    <label for="search-input" class="search-label">Search Updates</label>
-                    <div class="search-flex">
-                        <button id="search-icon-btn" class="search-icon-btn" aria-label="Toggle Search">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        </button>
-                        <input type="text" id="search-input" placeholder="Search by word or keyword...">
-                    </div>
-                </div>
-                
-                <div class="sidebar-group">
-                    <label for="year-select">Filter by Year</label>
-                    <select id="year-select">
-                        <option value="all">All Years</option>
-                    </select>
-                </div>
-            </aside>
-
             <!-- Feed -->
             <section class="news-feed" id="news-feed">
                 <p style="text-align:center; color:#888; font-size: 1.25rem;">Loading news entries...</p>
@@ -475,6 +545,19 @@
     </footer>
 
     <script>
+        // Widget Toggle Logic
+        const exploreFab = document.getElementById('explore-fab');
+        const closeExplore = document.getElementById('close-explore');
+        const newsSidebar = document.getElementById('news-sidebar');
+
+        exploreFab.addEventListener('click', () => {
+            newsSidebar.classList.toggle('open');
+        });
+
+        closeExplore.addEventListener('click', () => {
+            newsSidebar.classList.remove('open');
+        });
+
         // Global logic for Carousel Navigation within Entries
         window.moveSlide = function(carouselIndex, direction) {
             const container = document.getElementById(`carousel-${carouselIndex}`);
