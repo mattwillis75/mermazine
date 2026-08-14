@@ -35,7 +35,7 @@
             padding: 0;
             color: var(--text-dark);
             /* Fixed Parallax Background */
-            background-color: #e0e0e0;
+            background-color: var(--cyan-bg);
             background-image: url('images/background-hagstone.jpg');
             background-size: cover;
             background-position: center;
@@ -81,11 +81,16 @@
             color: var(--cyan-bg);
         }
 
-        /* Header Navigation */
+        /* Fixed Header Navigation */
         header {
             background-color: var(--cyan-bg);
             padding: 25px 0;
             width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: 4px solid var(--light-teal);
         }
 
         header .header-container {
@@ -142,9 +147,10 @@
             background-color: #ffffff;
             width: 1200px; /* 900px carousel + 150px left + 150px right */
             max-width: 100%;
-            margin: 0 auto;
-            overflow: hidden; /* Prevents margin collapse from the carousel */
-            box-shadow: 0 0 25px rgba(0,0,0,0.15); /* Optional: adds subtle depth against parallax background */
+            /* 109px top margin ensures the content starts perfectly below the fixed header */
+            margin: 109px auto 0 auto; 
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(0,0,0,0.15); 
         }
 
         /* Issues Carousel */
@@ -439,6 +445,9 @@
             .header-left {
                 flex-direction: column;
                 gap: 20px;
+            }
+            main {
+                margin-top: 180px; /* Adjusted for taller stacked header on mobile */
             }
             .shell-text-row {
                 flex-direction: column;
