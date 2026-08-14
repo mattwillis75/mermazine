@@ -191,34 +191,34 @@
         .carousel-prev { left: 20px; }
         .carousel-next { right: 20px; }
 
-        /* Issues Content Layout */
+        /* Issues Content Layout - Centered precisely under the 900px carousel */
         .issues-layout-wrapper {
-            max-width: 1920px;
+            width: 883px;
+            max-width: 90%;
             margin: 0 auto;
-            /* Padding increased to move text and images inwards */
-            padding-left: 360px;
-            padding-right: 360px;
             box-sizing: border-box;
             padding-bottom: 80px;
         }
 
         .content-row {
             display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            gap: 60px; /* Reduced gap between text and images */
+            flex-direction: column;
             align-items: stretch;
             margin-bottom: 50px;
             position: relative;
         }
 
         .center-text {
-            flex: 0 0 883px;
-            width: 883px;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             position: relative;
+        }
+
+        .section-1-text {
+            padding-right: 250px; /* Prevents text from overlapping the right-aligned combs */
+            box-sizing: border-box;
         }
 
         .center-text h1 {
@@ -305,7 +305,11 @@
 
         /* Image Columns */
         .right-images {
-            flex: 0 0 250px; /* Reduced width to bring images closer */
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 200px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -326,22 +330,24 @@
         }
 
         .img-align-right {
-            align-self: flex-end; /* Ensures both images align to the right */
+            align-self: flex-end; /* Ensures both images align to their absolute right boundary */
         }
 
         /* Final Shell Image Precise Alignment Container */
         .shell-alignment-container {
             position: relative;
-            padding-right: 250px; /* Clears space for the image to sit perfectly on the right */
+            padding-right: 250px; /* Exactly matches the space reserved for combs above */
             padding-top: 2px;
             padding-bottom: 2px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .aligned-shell-image {
             position: absolute;
             top: 0;
             right: 0;
-            height: 100%; /* Stretches height to perfectly match the wrapped text */
+            height: 100%; 
             width: auto;
             object-fit: contain;
             object-position: top right;
@@ -402,19 +408,6 @@
         }
 
         /* Responsive Adjustments */
-        @media (max-width: 1650px) {
-            .issues-layout-wrapper {
-                padding-left: 5%;
-                padding-right: 5%;
-            }
-            .center-text {
-                flex: 1;
-                width: auto;
-            }
-            .content-row:nth-child(2) {
-                flex-direction: column;
-            }
-        }
         @media (max-width: 1100px) {
             .issues-carousel-wrapper {
                 width: 90%;
@@ -431,10 +424,6 @@
                 flex-direction: column;
                 gap: 20px;
             }
-            .content-row {
-                flex-direction: column;
-                align-items: center;
-            }
             .shell-text-row {
                 flex-direction: column;
                 align-items: center;
@@ -445,7 +434,11 @@
             .inline-shell-image {
                 position: relative;
             }
+            .section-1-text {
+                padding-right: 0;
+            }
             .right-images {
+                position: relative;
                 width: 100%;
                 flex-direction: row;
                 justify-content: center;
@@ -509,7 +502,7 @@
             
             <!-- Section 1: Contents -->
             <div class="content-row">
-                <div class="center-text">
+                <div class="center-text section-1-text">
                     <div class="title-wrapper">
                         <h1 class="cyan-text">Mermazine Issue 1</h1>
                         <span class="straight-line"></span>
