@@ -48,8 +48,7 @@
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            /* overflow-x: hidden matches the Norfolk Folklore code and helps sticky elements */
-            overflow-x: hidden; 
+            overflow-x: clip; 
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -121,25 +120,25 @@
         .news-header { text-align: center; padding: 3rem 2rem 2rem; }
         .news-header h1 { font-size: 3rem; color: var(--cyan-bg); margin-bottom: 0.5rem; }
 
-        /* Applied Grid Layout from Norfolk Folklore for perfect sticky behavior */
         .news-container { 
             display: grid;
             grid-template-columns: 50px 1fr;
-            align-items: start; /* CRUCIAL: Stops the left column from stretching */
+            align-items: start; 
             padding: 0 5rem 0 15px; 
             gap: 15px; 
         }
 
-        /* Explore Widget Column (The element that actually sticks) */
+        /* Explore Widget Column (Placeholder column) */
         .explore-sidebar-container {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 130px; /* Locks exactly under the header */
+            position: relative;
             z-index: 2500;
         }
 
+        /* The completely fixed, out-of-flow icon */
         .explore-widget {
-            position: relative;
+            position: fixed;
+            top: 130px; 
+            /* Horizontally it naturally aligns inside the 50px grid column because no left/right rule is assigned */
         }
 
         .explore-fab {
