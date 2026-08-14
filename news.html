@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mermazine - For the Merfolk of East Anglia. Explore East Anglian mermaid lore, poetry, stories, and creative inspiration. Get Issue 1 now.">
+    <title>Mermazine | News</title>
+    
+    <!-- Google Fonts: Alegreya Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cyan-bg: #29e0d6;
+            --cyan-btn-hover: #50ece4;
+            --light-teal: #7cf1e9;
+            --text-dark: #111111;
+            --text-light: #ffffff;
+            --nav-hover-green: #0a8a7c;
+            --footer-bg: #1c1c1c;
+            --container-width: 1400px; 
+        }
+
+        /* Force scrollbar space to stop judder, but make the track invisible */
+        html {
+            scroll-behavior: smooth;
+            overflow-y: scroll; 
+            scrollbar-color: var(--cyan-bg) transparent; 
+        }
+
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--light-teal); border-radius: 6px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--cyan-bg); }
+
+        body {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.4;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--cyan-bg);
+            background-image: url('images/background-hagstone.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+        }
+
+        .straight-line {
+            height: 4px;
+            width: 100%;
+            background-color: var(--light-teal);
+            display: block;
+            border-radius: 2px;
+            margin-top: 2px;
+        }
+
+        .cyan-text { color: var(--cyan-bg); }
+
+        /* Fixed Header Navigation */
+        header {
+            background-color: var(--cyan-bg);
+            padding: 25px 0;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+            border-bottom: 2px solid var(--light-teal);
+        }
+
+        header .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 95%; 
+            margin: 0 auto;
+            padding: 0 2%;
+        }
+
+        .header-left { display: flex; align-items: center; gap: 60px; }
+        .header-logo img { max-height: 55px; object-fit: contain; }
+        .header-tagline img { max-height: 35px; object-fit: contain; }
+
+        nav ul { list-style: none; display: flex; gap: 35px; margin: 0; padding: 0; }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1.15rem;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover { color: var(--nav-hover-green); }
+        nav ul li a.active { color: var(--text-light); }
+
+        /* Main Content Wrapper (White Background) */
+        main {
+            background-color: #ffffff;
+            width: 1200px;
+            max-width: 100%;
+            margin: 107px auto 0 auto; 
+            box-shadow: 0 0 25px rgba(0,0,0,0.15); 
+            min-height: 100vh;
+            padding-bottom: 4rem;
+        }
+
+        /* Header within Main */
+        .news-header { text-align: center; padding: 3rem 2rem 2rem; }
+        .news-header h1 { font-size: 3rem; color: var(--cyan-bg); margin-bottom: 0.5rem; }
+
+        .news-container { 
+            display: grid; 
+            grid-template-columns: 280px 1fr; 
+            gap: 4rem; 
+            padding: 0 4rem; 
+            align-items: start; 
+        }
+
+        /* Sidebar Styling (Adapted for Mermazine) */
+        .news-sidebar {
+            position: sticky;
+            top: 130px;
+            background: #fdfdfd;
+            border: 2px solid var(--light-teal);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .news-sidebar h3 { 
+            margin-top: 0; 
+            margin-bottom: 1.5rem; 
+            font-size: 1.6rem; 
+            color: var(--cyan-bg);
+            border-bottom: 2px solid var(--light-teal); 
+            padding-bottom: 0.5rem; 
+        }
+
+        .sidebar-group { margin-bottom: 2rem; }
+        .sidebar-group label { 
+            display: block; 
+            margin-bottom: 0.5rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            font-size: 0.95rem; 
+            color: var(--text-dark); 
+        }
+
+        .news-sidebar input, .news-sidebar select {
+            width: 100%;
+            padding: 0.8rem;
+            background: #ffffff;
+            color: var(--text-dark);
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        .news-sidebar input:focus, .news-sidebar select:focus {
+            outline: none;
+            border-color: var(--cyan-bg);
+        }
+
+        /* Mobile Expandable Search overrides */
+        .search-flex { display: flex; width: 100%; align-items: center; }
+        .search-icon-btn { display: none; }
+
+        /* News Feed & Image Left Layout */
+        .news-feed { display: flex; flex-direction: column; gap: 4rem; }
+
+        .news-entry {
+            display: flex;
+            flex-direction: row; /* Image on left, text on right */
+            gap: 40px;
+            background: transparent;
+            padding: 0 0 3rem 0; 
+            border-bottom: 2px solid var(--light-teal); 
+        }
+
+        .news-entry:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .entry-media {
+            flex: 0 0 350px; /* Fixed width for the image block on the left */
+            max-width: 350px;
+        }
+
+        .entry-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .entry-image, .carousel-container { 
+            width: 100%; 
+            aspect-ratio: 4 / 3; 
+            object-fit: cover; 
+            background: #f0f0f0;
+            border-radius: 8px;
+        }
+        .entry-image { display: block; }
+
+        /* Carousel inside Entry */
+        .carousel-container { position: relative; overflow: hidden; display: block; }
+        .carousel-image { display: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%; object-fit: cover; }
+        .carousel-image.active { display: block; }
+        .carousel-btn { 
+            position: absolute; top: 50%; transform: translateY(-50%); 
+            background: rgba(255, 255, 255, 0.8); color: var(--text-dark); border: none; 
+            padding: 10px 14px; cursor: pointer; font-size: 1.2rem; 
+            z-index: 10; transition: background 0.3s;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .carousel-btn:hover { background: var(--cyan-bg); color: #fff; }
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+
+        .entry-date { color: var(--cyan-bg); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 1rem; margin-bottom: 0.5rem; display: block; }
+        .entry-title { font-size: 2.2rem; margin: 0 0 1rem 0; line-height: 1.2; color: var(--text-dark); }
+        
+        .entry-text, .entry-text p { 
+            font-size: 1.25rem; 
+            line-height: 1.5; 
+            text-align: left; 
+            color: var(--text-dark);
+        }
+
+        .entry-text p { 
+            margin-bottom: 1.5rem; 
+            margin-top: 0;
+        }
+
+        .entry-keywords { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+        .keyword-tag { 
+            color: #666; 
+            font-size: 0.95rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            display: flex; 
+            align-items: center; 
+        }
+        .keyword-tag:not(:last-child)::after {
+            content: '/';
+            color: var(--cyan-bg);
+            margin-left: 0.5rem;
+            font-weight: bold;
+        }
+
+        .no-results { text-align: center; padding: 4rem 0; color: #888; font-style: italic; font-size: 1.3rem; }
+
+        /* Comments Section Styles */
+        .comments-section { 
+            margin-top: 2rem; 
+            padding-top: 2rem; 
+            border-top: 2px dashed var(--light-teal); 
+            display: none; 
+        }
+
+        .toggle-comments-btn { 
+            align-self: flex-start;
+            margin-top: 1.5rem; 
+            background: transparent; 
+            border: 2px solid var(--cyan-bg); 
+            color: var(--cyan-bg); 
+            padding: 0.6rem 1.5rem; 
+            border-radius: 6px;
+            cursor: pointer; 
+            text-transform: uppercase; 
+            font-family: 'Alegreya Sans', sans-serif; 
+            font-weight: 700;
+            font-size: 1rem; 
+            transition: all 0.3s ease; 
+            letter-spacing: 1px;
+        }
+        .toggle-comments-btn:hover { 
+            background: var(--cyan-bg); 
+            color: #fff; 
+        }
+
+        .comment-item { 
+            background: #fdfdfd; 
+            padding: 1.2rem; 
+            border-left: 4px solid var(--cyan-bg); 
+            margin-bottom: 1rem; 
+            border-radius: 0 6px 6px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .comment-header { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 0.5rem; 
+            font-size: 0.95rem; 
+        }
+        .comment-author { font-weight: 700; color: var(--text-dark); text-transform: uppercase; letter-spacing: 1px; }
+        .comment-date { color: #888; }
+        .comment-body { font-size: 1.1rem; line-height: 1.5; margin: 0; }
+
+        .comment-form { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 1rem; 
+            margin-top: 2rem;
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        .comment-form h4 { 
+            margin: 0 0 0.5rem 0; 
+            font-size: 1.5rem; 
+            color: var(--cyan-bg);
+        }
+        .comment-form input, .comment-form textarea { 
+            width: 100%; 
+            padding: 0.8rem; 
+            background: #fff; 
+            color: var(--text-dark); 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 1rem; 
+            box-sizing: border-box; 
+            transition: border-color 0.3s;
+        }
+        .comment-form input:focus, .comment-form textarea:focus { 
+            outline: none; 
+            border-color: var(--cyan-bg); 
+        }
+        .comment-form button { 
+            background: var(--cyan-bg); 
+            color: #fff; 
+            border: none; 
+            padding: 0.8rem;
+            border-radius: 6px; 
+            text-transform: uppercase; 
+            font-weight: 700; 
+            cursor: pointer; 
+            transition: background 0.3s; 
+            letter-spacing: 1px;
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 1rem;
+        }
+        .comment-form button:hover { background: var(--nav-hover-green); }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-bg);
+            padding: 60px 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .footer-nav { margin-bottom: 25px; }
+        .footer-nav ul {
+            list-style: none; display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0;
+        }
+        .footer-nav ul li a {
+            color: var(--text-light); text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: color 0.3s;
+        }
+        .footer-nav ul li a:hover { color: var(--cyan-bg); }
+        .footer-line-container { width: 300px; margin: 0 auto 30px auto; }
+        .social-links { display: flex; justify-content: center; gap: 20px; }
+        .social-links img { width: 35px; height: 35px; transition: transform 0.3s; }
+        .social-links img:hover { transform: scale(1.1); }
+
+        /* Mobile Layout */
+        @media (max-width: 1100px) {
+            .news-container { grid-template-columns: 1fr; gap: 2rem; padding: 0 2rem; } 
+            .news-sidebar { position: static; margin-bottom: 2rem; }
+            .news-entry { flex-direction: column; gap: 20px; }
+            .entry-media { flex: 0 0 auto; width: 100%; max-width: 100%; }
+        }
+
+        @media (max-width: 900px) {
+            header .header-container { flex-direction: column; justify-content: center; gap: 20px; }
+            .header-left { flex-direction: column; gap: 20px; }
+            main { margin-top: 178px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="header-container">
+            <div class="header-left">
+                <img src="images/mermazine-logo-1.png" alt="Mermazine Logo" width="200" height="55" class="header-logo" loading="lazy">
+                <img src="images/tagline-1.png" alt="For the Merfolk of East Anglia" width="250" height="35" class="header-tagline" loading="lazy">
+            </div>
+            <nav aria-label="Main Navigation">
+                <ul>
+                    <li><a href="index.html">About</a></li>
+                    <li><a href="issues.html">Issues</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
+                    <li><a href="workshops.html">Workshops and Talks</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="news-header">
+            <h1>Mermazine News</h1>
+            <div style="width: 150px; margin: 0 auto;">
+                <span class="straight-line"></span>
+            </div>
+        </div>
+
+        <div class="news-container">
+            <!-- Sidebar -->
+            <aside class="news-sidebar">
+                <h3>Explore</h3>
+                
+                <div class="sidebar-group search-wrapper" id="search-wrapper">
+                    <label for="search-input" class="search-label">Search Updates</label>
+                    <div class="search-flex">
+                        <button id="search-icon-btn" class="search-icon-btn" aria-label="Toggle Search">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                        <input type="text" id="search-input" placeholder="Search by word or keyword...">
+                    </div>
+                </div>
+                
+                <div class="sidebar-group">
+                    <label for="year-select">Filter by Year</label>
+                    <select id="year-select">
+                        <option value="all">All Years</option>
+                    </select>
+                </div>
+            </aside>
+
+            <!-- Feed -->
+            <section class="news-feed" id="news-feed">
+                <p style="text-align:center; color:#888; font-size: 1.25rem;">Loading news entries...</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <nav class="footer-nav" aria-label="Footer Navigation">
+                <ul>
+                    <li><a href="index.html">About</a></li>
+                    <li><a href="issues.html">Issues</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="workshops.html">Workshops and Talks</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="footer-line-container">
+                <span class="straight-line"></span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/mermazine/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram page"><img src="images/footer-1-instagram.png" alt="Instagram" loading="lazy"></a>
+                <a href="https://www.facebook.com/people/Mermazine/61584103032097/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page"><img src="images/footer-2-facebook.png" alt="Facebook" loading="lazy"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global logic for Carousel Navigation within Entries
+        window.moveSlide = function(carouselIndex, direction) {
+            const container = document.getElementById(`carousel-${carouselIndex}`);
+            if (!container) return;
+            const slides = container.querySelectorAll('.carousel-image');
+            if (slides.length === 0) return;
+
+            let currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+            slides[currentIndex].classList.remove('active');
+
+            let nextIndex = currentIndex + direction;
+            if (nextIndex < 0) nextIndex = slides.length - 1;
+            if (nextIndex >= slides.length) nextIndex = 0;
+
+            slides[nextIndex].classList.add('active');
+        };
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const feedContainer = document.getElementById('news-feed');
+            const searchInput = document.getElementById('search-input');
+            const yearSelect = document.getElementById('year-select');
+            
+            let allEntries = [];
+            let uniqueYears = new Set();
+            let currentIndex = 1;
+
+            // --- 1. SEQUENTIAL FETCH LOOP ---
+            while (true) {
+                try {
+                    const response = await fetch(`entry-${currentIndex}.txt`, { cache: 'no-store' });
+                    
+                    if (!response.ok) {
+                        break; 
+                    }
+                    
+                    const text = await response.text();
+                    const lines = text.split('\n');
+                    let entry = { textHtml: '', keywords: [], images: [] };
+                    let isParsingText = false;
+
+                    lines.forEach(line => {
+                        if (!isParsingText) {
+                            const sepIndex = line.indexOf(':');
+                            if (sepIndex > -1) {
+                                const key = line.slice(0, sepIndex).trim().toLowerCase();
+                                const value = line.slice(sepIndex + 1).trim();
+                                
+                                if (key === 'date') {
+                                    entry.date = value;
+                                    const year = value.split('-')[0];
+                                    if(year) uniqueYears.add(year);
+                                }
+                                else if (key === 'title') entry.title = value;
+                                else if (key === 'image') entry.images = value.split(',').map(i => i.trim());
+                                else if (key === 'keywords') entry.keywords = value.split(',').map(k => k.trim());
+                                else if (key === 'text') {
+                                    isParsingText = true;
+                                    const firstLineText = value; 
+                                    if(firstLineText) entry.textHtml += `<p>${firstLineText}</p>`;
+                                }
+                            }
+                        } else {
+                            if (line.trim() === '') {
+                                entry.textHtml += `</p><p>`;
+                            } else {
+                                entry.textHtml += line + ' ';
+                            }
+                        }
+                    });
+
+                    entry.textHtml = entry.textHtml.replace(/<p><\/p>/g, '');
+                    
+                    if (entry.title) allEntries.push(entry);
+                    currentIndex++;
+
+                } catch (error) {
+                    console.error("Finished loading entries or error occurred.");
+                    break;
+                }
+            }
+
+            // --- 2. SORT AND INITIALIZE UI ---
+            if (allEntries.length === 0) {
+                feedContainer.innerHTML = '<div class="no-results">No news entries found. Add your first entry as "entry-1.txt".</div>';
+            } else {
+                allEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                Array.from(uniqueYears).sort().reverse().forEach(year => {
+                    yearSelect.innerHTML += `<option value="${year}">${year}</option>`;
+                });
+
+                renderEntries(allEntries);
+            }
+
+            // --- 3. RENDER FUNCTION ---
+            function renderEntries(entriesToRender) {
+                feedContainer.innerHTML = '';
+                
+                if (entriesToRender.length === 0) {
+                    feedContainer.innerHTML = '<div class="no-results">No entries match your search criteria.</div>';
+                    return;
+                }
+
+                entriesToRender.forEach((entry, index) => {
+                    const dateObj = new Date(entry.date);
+                    const formattedDate = dateObj.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+                    // Image / Carousel Logic
+                    let imageHtml = '';
+                    if (entry.images && entry.images.length > 0 && entry.images[0] !== "") {
+                        if (entry.images.length === 1) {
+                            imageHtml = `<img src="${entry.images[0]}" alt="${entry.title}" class="entry-image" loading="lazy">`;
+                        } else {
+                            let slides = entry.images.map((img, i) => 
+                                `<img src="${img}" alt="${entry.title} - Image ${i+1}" class="carousel-image ${i === 0 ? 'active' : ''}" loading="lazy">`
+                            ).join('');
+
+                            imageHtml = `
+                                <div class="carousel-container" id="carousel-${index}">
+                                    ${slides}
+                                    <button class="carousel-btn prev" onclick="moveSlide(${index}, -1)">&#10094;</button>
+                                    <button class="carousel-btn next" onclick="moveSlide(${index}, 1)">&#10095;</button>
+                                </div>
+                            `;
+                        }
+                    }
+                    
+                    let keywordsHtml = '';
+                    if (entry.keywords.length > 0 && entry.keywords[0] !== "") {
+                        keywordsHtml = `<div class="entry-keywords">` + entry.keywords.map(k => `<span class="keyword-tag">${k}</span>`).join('') + `</div>`;
+                    }
+
+                    feedContainer.innerHTML += `
+                        <article class="news-entry">
+                            <div class="entry-media">
+                                ${imageHtml}
+                            </div>
+                            <div class="entry-content">
+                                <span class="entry-date">${formattedDate}</span>
+                                <h2 class="entry-title">${entry.title}</h2>
+                                <div class="entry-text">${entry.textHtml}</div>
+                                ${keywordsHtml}
+
+                                <button id="toggle-btn-${index}" class="toggle-comments-btn" onclick="window.toggleComments('${index}', '${entry.title.replace(/'/g, "\\'")}')">
+                                    Load Comments
+                                </button>
+                                
+                                <div id="comments-section-${index}" class="comments-section">
+                                    <div id="comment-list-${index}"></div>
+                                    
+                                    <div class="comment-form">
+                                        <h4>Leave a Note</h4>
+                                        <input type="text" id="comment-name-${index}" placeholder="Your Name (Required)">
+                                        <textarea id="comment-text-${index}" rows="3" placeholder="Your thoughts on this entry... (Required)"></textarea>
+                                        <button onclick="window.submitComment('${index}', '${entry.title.replace(/'/g, "\\'")}')">Post Comment</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    `;
+                });
+            }
+
+            // --- 4. SEARCH & FILTER LOGIC ---
+            function filterJournal() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const selectedYear = yearSelect.value;
+
+                const filtered = allEntries.filter(entry => {
+                    const matchesYear = selectedYear === 'all' || entry.date.startsWith(selectedYear);
+                    const matchesSearch = searchTerm === '' || 
+                        entry.title.toLowerCase().includes(searchTerm) || 
+                        entry.textHtml.toLowerCase().includes(searchTerm) ||
+                        entry.keywords.some(k => k.toLowerCase().includes(searchTerm));
+
+                    return matchesYear && matchesSearch;
+                });
+
+                renderEntries(filtered);
+            }
+
+            searchInput.addEventListener('keyup', filterJournal);
+            yearSelect.addEventListener('change', filterJournal);
+            
+        });
+    </script>
+    <script type="module">
+        // Import the functions you need from the Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, query, where, orderBy, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyAn4X2DQXlTaxW2wiNdl536tAmK7T1oOuI",
+          authDomain: "the-folklore-box.firebaseapp.com",
+          projectId: "the-folklore-box",
+          storageBucket: "the-folklore-box.firebasestorage.app",
+          messagingSenderId: "120616950202",
+          appId: "1:120616950202:web:779aea24db860f02afe583",
+          measurementId: "G-P09VH0KC9S"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Global function to toggle and fetch comments
+        window.toggleComments = async function(index, entryTitle) {
+            const section = document.getElementById(`comments-section-${index}`);
+            const btn = document.getElementById(`toggle-btn-${index}`);
+            const list = document.getElementById(`comment-list-${index}`);
+            
+            if (section.style.display === 'none' || section.style.display === '') {
+                section.style.display = 'block';
+                btn.textContent = 'Hide Comments';
+                
+                if (list.innerHTML.trim() === '') {
+                    list.innerHTML = '<p style="color: #888; font-style: italic;">Loading folklore scholars...</p>';
+                    try {
+                        const q = query(
+                            collection(db, "comments"), 
+                            where("entryId", "==", entryTitle), 
+                            orderBy("timestamp", "asc")
+                        );
+                        const querySnapshot = await getDocs(q);
+                        
+                        list.innerHTML = ''; 
+                        
+                        if (querySnapshot.empty) {
+                            list.innerHTML = '<p style="color: #888; font-style: italic;">No notes found for this entry. Be the first to add yours.</p>';
+                        } else {
+                            querySnapshot.forEach((doc) => {
+                                const data = doc.data();
+                                const dateStr = data.timestamp ? data.timestamp.toDate().toLocaleDateString('en-GB') : 'Just now';
+                                
+                                list.innerHTML += `
+                                    <div class="comment-item">
+                                        <div class="comment-header">
+                                            <span class="comment-author">${data.name}</span>
+                                            <span class="comment-date">${dateStr}</span>
+                                        </div>
+                                        <p class="comment-body">${data.text}</p>
+                                    </div>
+                                `;
+                            });
+                        }
+                    } catch (e) {
+                        console.error("Error fetching comments: ", e);
+                        list.innerHTML = `<p style="color: var(--cyan-bg);">The archives are currently unreachable. Try again later.</p>`;
+                    }
+                }
+            } else {
+                section.style.display = 'none';
+                btn.textContent = 'Load Comments';
+            }
+        };
+
+        // Global function to submit a comment
+        window.submitComment = async function(index, entryTitle) {
+            const nameInput = document.getElementById(`comment-name-${index}`);
+            const textInput = document.getElementById(`comment-text-${index}`);
+            const list = document.getElementById(`comment-list-${index}`);
+            const btn = event.target;
+            
+            const name = nameInput.value.trim();
+            const text = textInput.value.trim();
+            
+            if (!name || !text) {
+                alert("Please provide both your name and a comment.");
+                return;
+            }
+
+            const originalBtnText = btn.textContent;
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            
+            try {
+                await addDoc(collection(db, "comments"), {
+                    entryId: entryTitle,
+                    name: name,
+                    text: text,
+                    timestamp: serverTimestamp()
+                });
+                
+                const noCommentsMsg = list.querySelector('p');
+                if (noCommentsMsg && noCommentsMsg.textContent.includes('No notes found')) {
+                    list.innerHTML = '';
+                }
+                
+                list.innerHTML += `
+                    <div class="comment-item" style="border-left-color: #29e0d6;">
+                        <div class="comment-header">
+                            <span class="comment-author">${name}</span>
+                            <span class="comment-date">Just now</span>
+                        </div>
+                        <p class="comment-body">${text}</p>
+                    </div>
+                `;
+                
+                nameInput.value = '';
+                textInput.value = '';
+                
+            } catch (e) {
+                console.error("Error adding document: ", e);
+                alert("Failed to add your note to the archive.");
+            } finally {
+                btn.textContent = originalBtnText;
+                btn.disabled = false;
+            }
+        };
+    </script>
+</body>
+</html>
