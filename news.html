@@ -23,8 +23,10 @@
             --container-width: 1400px; 
         }
 
+        /* Force scrollbar space to stop judder, but make the track invisible */
         html {
             scroll-behavior: smooth;
+            overflow-y: scroll; 
             scrollbar-color: var(--cyan-bg) transparent; 
         }
 
@@ -46,8 +48,8 @@
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            /* overflow-x: clip prevents horizontal scrolling without breaking position: sticky */
-            overflow-x: clip; 
+            /* overflow-x: hidden matches the Norfolk Folklore code and helps sticky elements */
+            overflow-x: hidden; 
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -119,25 +121,25 @@
         .news-header { text-align: center; padding: 3rem 2rem 2rem; }
         .news-header h1 { font-size: 3rem; color: var(--cyan-bg); margin-bottom: 0.5rem; }
 
+        /* Applied Grid Layout from Norfolk Folklore for perfect sticky behavior */
         .news-container { 
-            display: flex;
-            align-items: stretch; /* Crucial for the sticky container to extend to the bottom */
+            display: grid;
+            grid-template-columns: 50px 1fr;
+            align-items: start; /* CRUCIAL: Stops the left column from stretching */
             padding: 0 5rem 0 15px; 
             gap: 15px; 
         }
 
-        /* Explore Widget Column */
+        /* Explore Widget Column (The element that actually sticks) */
         .explore-sidebar-container {
-            flex: 0 0 50px; 
-            position: relative;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 130px; /* Locks exactly under the header */
             z-index: 2500;
-            height: 100%; /* Ensures the track spans the entire height of the news-container */
         }
 
         .explore-widget {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 130px; /* Locks cleanly underneath the fixed header */
+            position: relative;
         }
 
         .explore-fab {
@@ -253,7 +255,6 @@
 
         /* News Feed & Image Left Layout */
         .news-feed { 
-            flex: 1;
             width: 100%;
             display: flex; 
             flex-direction: column; 
