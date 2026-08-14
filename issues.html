@@ -195,8 +195,9 @@
         .issues-layout-wrapper {
             max-width: 1920px;
             margin: 0 auto;
-            padding-left: 297px;
-            padding-right: 320px;
+            /* Padding increased to move text and images inwards */
+            padding-left: 360px;
+            padding-right: 360px;
             box-sizing: border-box;
             padding-bottom: 80px;
         }
@@ -204,7 +205,8 @@
         .content-row {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: flex-start;
+            gap: 60px; /* Reduced gap between text and images */
             align-items: stretch;
             margin-bottom: 50px;
             position: relative;
@@ -265,7 +267,7 @@
         }
 
         .shell-image-wrapper {
-            flex: 0 0 160px; /* Space designated for the shell */
+            flex: 0 0 160px; 
             position: relative;
         }
 
@@ -275,7 +277,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Scales image proportionally to perfectly match the height of the text block */
+            object-fit: contain; 
             object-position: left top;
         }
 
@@ -289,7 +291,7 @@
         .shell-text-content h2 {
             font-size: 1.8rem;
             line-height: 1.3;
-            margin-top: 0; /* Keeps it flush with the top of the image */
+            margin-top: 0; 
             margin-bottom: 10px;
         }
 
@@ -303,7 +305,7 @@
 
         /* Image Columns */
         .right-images {
-            width: 420px;
+            flex: 0 0 250px; /* Reduced width to bring images closer */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -314,26 +316,35 @@
             object-fit: contain;
         }
 
-        /* Ensures the two combs share exact equal height proportions */
         .right-images.equal-height-imgs {
             gap: 30px;
         }
         
         .right-images.equal-height-imgs img {
             flex: 1; 
-            height: 0; /* Allows flex-grow to evenly divide the available height column */
+            height: 0; 
         }
 
         .img-align-right {
-            align-self: flex-end;
+            align-self: flex-end; /* Ensures both images align to the right */
         }
 
-        .img-align-center {
-            align-self: center;
+        /* Final Shell Image Precise Alignment Container */
+        .shell-alignment-container {
+            position: relative;
+            padding-right: 250px; /* Clears space for the image to sit perfectly on the right */
+            padding-top: 2px;
+            padding-bottom: 2px;
         }
 
-        .img-align-left {
-            align-self: flex-start;
+        .aligned-shell-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%; /* Stretches height to perfectly match the wrapped text */
+            width: auto;
+            object-fit: contain;
+            object-position: top right;
         }
 
         /* Footer */
@@ -445,6 +456,16 @@
                 align-self: center !important;
                 height: auto !important;
             }
+            .shell-alignment-container {
+                padding-right: 0;
+            }
+            .aligned-shell-image {
+                position: relative;
+                height: auto;
+                max-width: 200px;
+                margin: 20px auto;
+                display: block;
+            }
         }
     </style>
 </head>
@@ -520,7 +541,7 @@
                 </div>
                 <div class="right-images equal-height-imgs">
                     <img src="images/issues-1-comb.png" alt="Decorative Comb" class="img-align-right" loading="lazy">
-                    <img src="images/issues-2-comb.png" alt="Decorative Comb" class="img-align-center" loading="lazy">
+                    <img src="images/issues-2-comb.png" alt="Decorative Comb" class="img-align-right" loading="lazy">
                 </div>
             </div>
 
@@ -538,30 +559,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="right-images"></div>
             </div>
 
             <!-- Section 3: Contributors -->
             <div class="content-row">
                 <div class="center-text">
-                    <p class="italic-text">Created by Ickeny Press, Val Thomas, Chris Wood and Alice Kerridge-Crick<br>(The Mermaids of Fensalir Cunning)</p>
-                    <p class="italic-text">Each issue will be a community endeavour with this issue having contributions by:</p>
                     
-                    <p><strong>Val Thomas</strong> - Author of 'Of Chalk and Flint', 'Bounded in a Nutshell', 'Hallowtide: a Dark Devotional'. Val runs a very active Patreon (with a Green Witches Labyrinth monthly meet-up option) www.patreon.com/valthomaswitch</p>
-                    <p><strong>Chris Wood</strong> - Researcher, writer and speaker who can be found at www.cldeny.co.uk and www.norwichmoot.co.uk</p>
-                    <p><strong>Alice Kerridge-Crick</strong> - You can find me here, Fensalir Cunning, and also via my Christian Mystic shop MagdalenesWay (Instagram fensalir_cunning or thespikenardway).</p>
-                    <p><strong>Vix Valentine</strong> - A queer disabled artist from Norfolk.</p>
-                    <p><strong>Imogen Ashwin</strong> - Magical practitioner and weaver of stories who you can find via her blog 'Bracken & Wrack' on Substack.</p>
-                    <p><strong>Haychley Webb</strong> - Linocut printer who creates work under the name 'Stellabox Designs'. You can also sign up and find her Patreon (@stellaboxdesigns).</p>
-                    <p><strong>Siofra Connor</strong> - Co-founder and co-host of Norfolk Folklore Society. You can find them via their amazing podcast and Substack of the same name 'Norfolk Folklore Society'</p>
+                    <!-- Exact Alignment Wrapper -->
+                    <div class="shell-alignment-container">
+                        <img src="images/Issues-4-shell.png" alt="Decorative Shell" class="aligned-shell-image" loading="lazy">
+                        
+                        <p class="italic-text" style="margin-top: 0;">Created by Johnny Penn, Val Thomas, Chris Wood and Alice Kerridge-Crick<br>(The Mermaids of Fensalir Cunning)</p>
+                        <p class="italic-text">Each issue will be a community endeavour with this issue having contributions by:</p>
+                        
+                        <p><strong>Val Thomas</strong> - Author of 'Of Chalk and Flint', 'Bounded in a Nutshell', 'Hallowtide: a Dark Devotional'. Val runs a very active Patreon (with a Green Witches Labyrinth monthly meet-up option) www.patreon.com/valthomaswitch</p>
+                        <p><strong>Chris Wood</strong> - Researcher, writer and speaker who can be found at www.cldeny.co.uk and www.norwichmoot.co.uk</p>
+                        <p><strong>Alice Kerridge-Crick</strong> - You can find me here, Fensalir Cunning, and also via my Christian Mystic shop MagdalenesWay (Instagram fensalir_cunning or thespikenardway).</p>
+                        <p><strong>Vix Valentine</strong> - A queer disabled artist from Norfolk.</p>
+                        <p><strong>Imogen Ashwin</strong> - Magical practitioner and weaver of stories who you can find via her blog 'Bracken & Wrack' on Substack.</p>
+                        <p><strong>Haychley Webb</strong> - Linocut printer who creates work under the name 'Stellabox Designs'. You can also sign up and find her Patreon (@stellaboxdesigns).</p>
+                        <p style="margin-bottom: 0;"><strong>Siofra Connor</strong> - Co-founder and co-host of Norfolk Folklore Society. You can find them via their amazing podcast and Substack of the same name 'Norfolk Folklore Society'</p>
+                    </div>
+                    
                     <p><strong>Matt Willis</strong> - Illustrator and co-founder of Shuck Zine and the owner of "The Folklore Box" which you can find here! www.thefolklorebox.com and via Instagram.</p>
-                    
                     <p>This magazine has been designed to be accessible to all with care taken to choose a clear font and good size print for ease of reading.</p>
                     <p>The magazine is A5 size and has a page count of 118 pages (so it is a book!)</p>
                     <p>Though Mermazine is about the Merfolk of East Anglia it is written for all to enjoy, from all over the world, especially if you love folklore, magic, history, the environment and of course Mermaids. It is our wish that this will encourage the reader to explore their own surroundings and the magic held within it.</p>
-                </div>
-                <div class="right-images" style="justify-content: flex-end;">
-                    <img src="images/Issues-4-shell.png" alt="Decorative Shell" class="img-align-left" loading="lazy">
                 </div>
             </div>
 
